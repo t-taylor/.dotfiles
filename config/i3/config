@@ -1,0 +1,258 @@
+# i3 config file (v4)
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+# Set mod key (Mod1=<Alt>, Mod4=<Super>)
+set $mod Mod4
+
+# set default desktop layout (default is tiling)
+# workspace_layout tabbed <stacking|tabbed>
+
+# Configure border style <normal|1pixel|pixel xx|none|pixel>
+new_window pixel 3
+new_float normal
+
+# Hide borders
+hide_edge_borders none
+
+# font for tiles and bar
+font pango:monospace 8
+
+# Use Mouse+$mod to drag floating windows
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+m exec kitty
+
+# kill focused window
+bindsym $mod+BackSpace kill
+
+# start program launcher
+bindsym $mod+Return exec rofi -show run
+
+# window switch
+bindsym $mod+w exec rofi -show window
+
+# maim
+bindsym $mod+Print exec "maim -s | xclip -selection clipboard -t image/png"
+
+# exec --no-startup-id volumeicon
+bindsym $mod+Ctrl+m exec kitty -pavucontrol
+
+#bindsym $mod+Shift+v mode "vol"
+#mode "vol" {
+#    bindsym k exec "pamixer sset Master 5%+; killall -USR1 i3status"
+#    bindsym j exec "pamixer sset Master 5%-; killall -USR1 i3status"
+#    bindsym m exec "pamixer sset Master toggle; killall -USR1 i3status"
+#    bindsym space mode "default"
+#}
+
+#bindsym $mod+Shift+m mode "mpd"
+#mode "mpd" {
+#  bindsym h exec mpc prev
+#  bindsym j exec mpc seek +00:00:05
+#  bindsym k exec mpc seek -00:00:05
+#  bindsym l exec mpc next
+#  bindsym m exec mpc toggle
+#  bindsym space mode "default"
+#}
+
+# Screen brightness controls
+#bindsym $mod+Ctrl+S mode "bright"
+#mode "bright" {
+#    bindsym k exec "xbacklight -steps 50 -inc 10; notify-send 'brightness up'"
+#    bindsym j exec "xbacklight -steps 50 -dec 10; notify-send 'brightness down'"
+#    bindsym space mode "default"
+#}
+
+# Start Applications
+bindsym $mod+semicolon exec firefox
+bindsym $mod+Ctrl+p exec passmenu
+#mod+t starts guake
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Ctrl+h move workspace to output left
+bindsym $mod+Ctrl+j move workspace to output down
+bindsym $mod+Ctrl+k move workspace to output up
+bindsym $mod+Ctrl+l move workspace to output right
+
+# workspace back and forth (with/without active container)
+workspace_auto_back_and_forth yes
+bindsym $mod+b workspace back_and_forth
+bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+
+# split orientation
+bindsym $mod+v split v;exec notify-send 'tile vertically'
+bindsym $mod+q split toggle
+
+# toggle fullscreen mode for the focused container
+bindsym $mod+z fullscreen toggle
+bindsym $mod+Shift+z fullscreen toggle global
+
+bindsym $mod+e layout toggle
+bindsym $mod+r layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# toggle sticky
+bindsym $mod+backslash sticky toggle
+
+# focus the parent container
+bindsym $mod+p focus parent
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+i move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+i scratchpad show
+
+#navigate workspaces next / previous
+bindsym $mod+period workspace next
+bindsym $mod+comma workspace prev
+
+# Workspace names
+# to display names or symbols instead of plain workspace numbers you can use
+# something like: set $ws1 1:mail
+#                 set $ws2 2:
+set $ws1 a
+set $ws2 s
+set $ws3 d
+set $ws4 f
+set $ws5 g
+
+# switch to workspace
+bindsym $mod+a workspace $ws1
+bindsym $mod+s workspace $ws2
+bindsym $mod+d workspace $ws3
+bindsym $mod+f workspace $ws4
+bindsym $mod+g workspace $ws5
+
+# Move focused container to workspace
+bindsym $mod+Ctrl+a move container to workspace $ws1
+bindsym $mod+Ctrl+s move container to workspace $ws2
+bindsym $mod+Ctrl+d move container to workspace $ws3
+bindsym $mod+Ctrl+f move container to workspace $ws4
+bindsym $mod+Ctrl+g move container to workspace $ws5
+bindsym $mod+Ctrl+comma move container to workspace prev
+bindsym $mod+Ctrl+period move container to workspace next
+
+# Move to workspace with focused container
+bindsym $mod+Shift+a move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+s move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+d move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+f move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+g move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+comma move container to workspace prev; workspace prev
+bindsym $mod+Shift+period move container to workspace next; workspace next
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Resize window (you can also use the mouse for that)
+bindsym $mod+Ctrl+y resize shrink width 5 px or 5 ppt
+bindsym $mod+Ctrl+u resize grow height 5 px or 5 ppt
+bindsym $mod+Ctrl+i resize shrink height 5 px or 5 ppt
+bindsym $mod+Ctrl+o resize grow width 5 px or 5 ppt
+
+bindsym $mod+Ctrl+space floating toggle; resize set 2400 1400; move position center
+
+# Lock screen
+bindsym $mod+0 exec --no-startup-id betterlockscreen -l
+
+# Color palette used for the terminal ( ~/.Xresources file )
+# Colors are gathered based on the documentation:
+# https://i3wm.org/docs/userguide.html#xresources
+# Change the variable name at the place you want to match the color
+# of your terminal like this:
+# [example]
+# If you want your bar to have the same background color as your
+# terminal background change the line 362 from:
+# background #14191D
+# to:
+# background $term_background
+# Same logic applied to everything else.
+set_from_resource $term_background background
+set_from_resource $term_foreground foreground
+set_from_resource $term_color0     color0
+set_from_resource $term_color1     color1
+set_from_resource $term_color2     color2
+set_from_resource $term_color3     color3
+set_from_resource $term_color4     color4
+set_from_resource $term_color5     color5
+set_from_resource $term_color6     color6
+set_from_resource $term_color7     color7
+set_from_resource $term_color8     color8
+set_from_resource $term_color9     color9
+set_from_resource $term_color10    color10
+set_from_resource $term_color11    color11
+set_from_resource $term_color12    color12
+set_from_resource $term_color13    color13
+set_from_resource $term_color14    color14
+set_from_resource $term_color15    color15
+
+# Set inner/outer gaps
+gaps outer 0
+gaps inner 20
+
+smart_borders on
+
+bindsym $mod+Shift+n gaps horizontal current set 520
+bindsym $mod+Ctrl+n gaps horizontal current set 0
+bindsym $mod+n gaps inner all toggle 20
+
+# set primary gruvbox colorscheme colors
+set $bg #282828
+set $fg #ebdbb2
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $blue2 #83a598
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+
+# blue gruvbox
+# class                 border|backgr|text|indicator|child_border
+client.focused          $blue $blue $darkgray $blue2 $blue
+client.focused_inactive $darkgray $darkgray $blue $darkgray $darkgray
+client.unfocused        $darkgray $darkgray $blue $darkgray $darkgray
+client.urgent           $red $red $fg $red $red
+
+bar {
+    status_command i3status
+    mode hide
+    colors {
+        background $bg
+        statusline $fg
+        separator $gray
+
+        # border  backgr. text
+        focused_workspace  $blue $blue $fg
+        active_workspace   $blue $bg   $fg
+        inactive_workspace $bg $bg $fg
+        urgent_workspace   $red $red $fg
+    }
+}

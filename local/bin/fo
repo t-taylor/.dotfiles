@@ -1,0 +1,32 @@
+#!/bin/env bash
+
+
+function open {
+    selected=$(fzf)
+    rifle $selected
+}
+
+function gto {
+    echo $(fd -t d | fzf)
+}
+
+function print_help {
+    echo '''
+Usage: fo [options]
+
+Options:
+  -o        Open a file selected from fzf
+  -c        Echo a selected directory
+'''
+
+}
+
+[[ $# -eq 0 ]] && print_help && exit 0
+
+while getopts 'oc' flag; do
+    case "${flag}" in
+        o) open;;
+        c) gto;;
+        *) print_help;;
+    esac
+done
