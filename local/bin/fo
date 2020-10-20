@@ -2,31 +2,38 @@
 
 
 function open {
-    selected=$(fzf)
-    rifle $selected
+  selected=$(fzf)
+  rifle $selected
 }
 
 function gto {
-    echo $(fd -t d | fzf)
+  echo $(fd -t d | fzf)
+}
+
+function open-config {
+  selected=$(fd -t f -t l . ~/.config | fzf)
+  rifle $selected
 }
 
 function print_help {
-    echo '''
-Usage: fo [options]
+  echo '''
+  Usage: fo [options]
 
-Options:
+  Options:
   -o        Open a file selected from fzf
   -c        Echo a selected directory
-'''
+  -d        Search through ~/.config
+  '''
 
 }
 
 [[ $# -eq 0 ]] && print_help && exit 0
 
-while getopts 'oc' flag; do
-    case "${flag}" in
-        o) open;;
-        c) gto;;
-        *) print_help;;
-    esac
+while getopts 'ocd' flag; do
+  case "${flag}" in
+    o) open;;
+    c) gto;;
+    d) open-config;;
+    *) print_help;;
+  esac
 done
