@@ -35,16 +35,13 @@ bindsym $mod+w exec rofi -show window
 # maim
 bindsym $mod+Print exec "maim -s | xclip -selection clipboard -t image/png"
 
-# exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec kitty -pavucontrol
-
-#bindsym $mod+Shift+v mode "vol"
-#mode "vol" {
-#    bindsym k exec "pamixer sset Master 5%+; killall -USR1 i3status"
-#    bindsym j exec "pamixer sset Master 5%-; killall -USR1 i3status"
-#    bindsym m exec "pamixer sset Master toggle; killall -USR1 i3status"
-#    bindsym space mode "default"
-#}
+bindsym $mod+Shift+v mode "vol"
+mode "vol" {
+    bindsym k exec "volume up"
+    bindsym j exec "volume down"
+    bindsym m exec "volume mute"
+    bindsym space mode "default"
+}
 
 #bindsym $mod+Shift+m mode "mpd"
 #mode "mpd" {

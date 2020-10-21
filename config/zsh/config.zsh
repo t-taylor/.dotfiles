@@ -91,3 +91,6 @@ function goto-dir {
 }
 zle -N goto-dir
 bindkey '^[c' goto-dir
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey '^[e' edit-command-line
