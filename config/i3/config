@@ -175,7 +175,7 @@ bindsym $mod+Ctrl+o resize grow width 5 px or 5 ppt
 bindsym $mod+Ctrl+space floating toggle; resize set 2400 1400; move position center
 
 # Lock screen
-bindsym $mod+0 exec --no-startup-id betterlockscreen -l
+bindsym $mod+0 exec i3lock --color "#000000"
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:

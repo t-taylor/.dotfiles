@@ -177,9 +177,9 @@ Plug 'ncm2/float-preview.nvim'
 "Plug 'tomtom/quickfixsigns_vim'
 " Math
 Plug 'arecarn/vim-crunch'
-" Coc
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"" Pythong
+" Complete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'deoplete-plugins/deoplete-jedi'
 " indent
 Plug 'Vimjas/vim-python-pep8-indent'
 " terminal text pipe
@@ -230,11 +230,6 @@ vnoremap <tab>/ :call RgRange()<cr>
 nnoremap <tab>t :Lines<cr>
 
 " complete
-set completeopt=menu
-set pumheight=15
-set dictionary+='/usr/share/dict/words'
-set dictionary+='/usr/share/dict/british-english'
-
 let g:float_preview#docked = 1
 
 "" quickfix gutter
@@ -262,3 +257,6 @@ vnoremap <leader>m :TREPLSendSelection<cr> " send current selection
 nnoremap <leader>% :TREPLSendFile<cr>
 
 let g:neoterm_repl_python = "pipenv run ipython --no-autoindent"
+
+"Complete
+let g:deoplete#enable_at_startup = 1
