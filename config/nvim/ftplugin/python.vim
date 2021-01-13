@@ -1,1 +1,1 @@
-let g:neoterm_eof="\<cr>"
+let g:neoterm_eof=""

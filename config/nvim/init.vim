@@ -178,8 +178,7 @@ Plug 'ncm2/float-preview.nvim'
 " Math
 Plug 'arecarn/vim-crunch'
 " Complete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'davidhalter/jedi-vim'
 " indent
 Plug 'Vimjas/vim-python-pep8-indent'
 " terminal text pipe
@@ -230,23 +229,8 @@ vnoremap <tab>/ :call RgRange()<cr>
 nnoremap <tab>t :Lines<cr>
 
 " complete
+set completeopt=menu
 let g:float_preview#docked = 1
-
-"" quickfix gutter
-"let g:quickfixsigns#vcsdiff#vcs={}
-"let g:quickfixsigns#marks#global=['4']
-"let g:quickfixsigns#marks#buffer=['4']
-"let g:quickfixsigns_type_rx={'*': [['>>', '\c\<error\>'], ['⚠', '\c\<warning\>']]}
-
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-inoremap <c-x><c-c> coc#refresh()
 
 " neoterm
 let g:neoterm_default_mod='vertical bo' " open terminal in bottom split
@@ -258,5 +242,7 @@ nnoremap <leader>% :TREPLSendFile<cr>
 
 let g:neoterm_repl_python = "pipenv run ipython --no-autoindent"
 
-"Complete
-let g:deoplete#enable_at_startup = 1
+" jedi
+let g:jedi#completions_command = '<C-j>'
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_call_signatures = 0
