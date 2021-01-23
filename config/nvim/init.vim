@@ -136,6 +136,12 @@ endfunction
 
 nnoremap <F7> :call ToggleHiddenAll()<CR>
 
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent! loadview
+augroup END
+
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 "" Color scheme
