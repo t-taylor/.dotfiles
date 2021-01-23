@@ -1,0 +1,7 @@
+[user]
+	email = ttaylor3.142@gmail.com
+	name = Tom Taylor
+[commit]
+	gpgsign = true
+[pull]
+	rebase = false
