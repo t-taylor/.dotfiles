@@ -95,3 +95,4 @@ autoload -z edit-command-line
 zle -N edit-command-line
 bindkey '^[e' edit-command-line
 unsetopt BEEP
+alias l='ls -la --color'

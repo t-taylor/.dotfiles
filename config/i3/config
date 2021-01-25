@@ -1,5 +1,10 @@
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+# Autostart
+exec feh --bg-fill Images/night.jpg
+exec qjackctl
+
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
@@ -43,15 +48,17 @@ mode "vol" {
     bindsym space mode "default"
 }
 
-#bindsym $mod+Shift+m mode "mpd"
-#mode "mpd" {
-#  bindsym h exec mpc prev
-#  bindsym j exec mpc seek +00:00:05
-#  bindsym k exec mpc seek -00:00:05
-#  bindsym l exec mpc next
-#  bindsym m exec mpc toggle
-#  bindsym space mode "default"
-#}
+bindsym $mod+Shift+m mode "mpd"
+mode "mpd" {
+  bindsym h exec mpc prev
+  bindsym '[' exec mpc seek +00:00:05
+  bindsym ']' exec mpc seek -00:00:05
+  bindsym l exec mpc next
+  bindsym m exec mpc toggle
+  bindsym j exec mpc volume -2
+  bindsym k exec mpc volume +2
+  bindsym space mode "default"
+}
 
 # Screen brightness controls
 bindsym $mod+Shift+b mode "bright"
@@ -119,8 +126,8 @@ bindsym $mod+Shift+i move scratchpad
 bindsym $mod+i scratchpad show
 
 #navigate workspaces next / previous
-bindsym $mod+period workspace next
-bindsym $mod+comma workspace prev
+bindsym $mod+period workspace next_on_output
+bindsym $mod+comma workspace prev_on_output
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use

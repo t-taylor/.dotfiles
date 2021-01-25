@@ -6,31 +6,23 @@ general {
         color_bad =      '#cc241d'   
 }
 
-order += "ethernet bond0"
-order += "battery all"
+order += "load"
+order += "ethernet enp8s0"
 order += "memory"
 order += "tztime local"
 
-wireless wlp3s0 {
-        format_up = "W: (%quality at %essid) %ip"
-        format_down = "W: down"
-}
-
-ethernet bond0 {
-        format_up = "net: %ip (%speed)"
+ethernet enp8s0 {
+        format_up = "net: %ip"
         format_down = "net: down"
 }
 
-battery all {
-        format = "bat: %status %percentage %remaining"
-}
 
 disk "/" {
         format = "%avail"
 }
 
 load {
-        format = "%1min"
+        format = "lod: %1min"
 }
 
 memory {

@@ -1,6 +1,7 @@
 [user]
 	email = ttaylor3.142@gmail.com
 	name = Tom Taylor
+	signingkey = ttaylor3.142@gmail.com
 [commit]
 	gpgsign = true
 [pull]
