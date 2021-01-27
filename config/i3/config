@@ -5,7 +5,6 @@
 #exec feh --bg-fill Images/night.jpg
 #exec qjackctl
 
-
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
@@ -25,8 +24,13 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
-# start a terminal
+focus_wrapping true
+
+# start stuff
 bindsym $mod+m exec kitty
+bindsym $mod+f exec firefox
+bindsym $mod+s exec steam
+
 
 # kill focused window
 bindsym $mod+BackSpace kill
@@ -69,8 +73,8 @@ mode "bright" {
 }
 
 # Start Applications
-bindsym $mod+semicolon exec --no-startup-id nws
-
+bindsym $mod+semicolon exec --no-startup-id nws -c
+bindsym $mod+shift+semicolon exec --no-startup-id nws -m
 bindsym $mod+Ctrl+p exec passmenu
 #mod+t starts guake
 
@@ -93,7 +97,6 @@ bindsym $mod+Ctrl+l move workspace to output right
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
-bindsym $mod+tab workspace back_and_forth
 #bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
@@ -130,6 +133,9 @@ bindsym $mod+i scratchpad show
 bindsym $mod+period workspace next_on_output
 bindsym $mod+comma workspace prev_on_output
 
+# tab
+bindsym $mod+Tab focus output left
+
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
@@ -157,15 +163,15 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+1 move container to workspace number $ws1; workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2; workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3; workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4; workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5; workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6; workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7; workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8; workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9; workspace number $ws9
 
 bindsym $mod+Shift+comma move container to workspace prev_on_output; workspace prev_on_output
 bindsym $mod+Shift+period move container to workspace next_on_output; workspace next_on_output

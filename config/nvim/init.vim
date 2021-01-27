@@ -61,6 +61,8 @@ inoremap <C-e> <C-o>e<right>
 inoremap <C-a> <C-o>b
 inoremap jk <Esc>
 inoremap jl <Esc>:w<cr>
+tnoremap jk <C-\><C-n>
+nnoremap go :tabedit
 
 let mapleader=","
 nnoremap <space> <nop>
