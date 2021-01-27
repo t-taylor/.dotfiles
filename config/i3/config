@@ -2,8 +2,8 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 #
 # Autostart
-exec feh --bg-fill Images/night.jpg
-exec qjackctl
+#exec feh --bg-fill Images/night.jpg
+#exec qjackctl
 
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
@@ -69,7 +69,8 @@ mode "bright" {
 }
 
 # Start Applications
-bindsym $mod+semicolon exec firefox
+bindsym $mod+semicolon exec --no-startup-id nws
+
 bindsym $mod+Ctrl+p exec passmenu
 #mod+t starts guake
 
@@ -133,36 +134,41 @@ bindsym $mod+comma workspace prev_on_output
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 a
-set $ws2 s
-set $ws3 d
-set $ws4 f
-set $ws5 g
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # switch to workspace
-bindsym $mod+a workspace $ws1
-bindsym $mod+s workspace $ws2
-bindsym $mod+d workspace $ws3
-bindsym $mod+f workspace $ws4
-bindsym $mod+g workspace $ws5
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
 
-# Move focused container to workspace
-bindsym $mod+Ctrl+a move container to workspace $ws1
-bindsym $mod+Ctrl+s move container to workspace $ws2
-bindsym $mod+Ctrl+d move container to workspace $ws3
-bindsym $mod+Ctrl+f move container to workspace $ws4
-bindsym $mod+Ctrl+g move container to workspace $ws5
-bindsym $mod+Ctrl+comma move container to workspace prev
-bindsym $mod+Ctrl+period move container to workspace next
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
 
-# Move to workspace with focused container
-bindsym $mod+Shift+a move container to workspace $ws1; workspace $ws1
-bindsym $mod+Shift+s move container to workspace $ws2; workspace $ws2
-bindsym $mod+Shift+d move container to workspace $ws3; workspace $ws3
-bindsym $mod+Shift+f move container to workspace $ws4; workspace $ws4
-bindsym $mod+Shift+g move container to workspace $ws5; workspace $ws5
-bindsym $mod+Shift+comma move container to workspace prev; workspace prev
-bindsym $mod+Shift+period move container to workspace next; workspace next
+bindsym $mod+Shift+comma move container to workspace prev_on_output; workspace prev_on_output
+bindsym $mod+Shift+period move container to workspace next_on_output; workspace next_on_output
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
