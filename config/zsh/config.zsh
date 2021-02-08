@@ -96,3 +96,10 @@ zle -N edit-command-line
 bindkey '^[e' edit-command-line
 unsetopt BEEP
 alias l='ls -la --color'
+
+function cpr() {
+  rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 "$@"
+} 
+function mvr() {
+  rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files "$@"
+}

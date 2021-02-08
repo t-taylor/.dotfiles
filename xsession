@@ -16,4 +16,5 @@ if [ "$GDMSESSION" = "i3" ]; then
     feh --bg-fill /home/tom/Pictures/darksnow.jpg
     picom &
     guake &
+    echo "test" >> /home/tom/THISDOESGETRUN
 fi

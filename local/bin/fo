@@ -1,6 +1,5 @@
 #!/bin/env bash
 
-
 function open {
   selected=$(fzf)
   rifle $selected

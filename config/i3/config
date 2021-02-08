@@ -2,8 +2,12 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 #
 # Autostart
-exec feh --bg-fill Images/night.jpg
+exec feh --bg-fill Pictures/night.jpg
 exec qjackctl
+exec rhythmbox
+for_window [class="^Rhytmbox$"] move scratchpad
+
+for_window [class="chatty"] floating enable
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
@@ -42,25 +46,25 @@ bindsym $mod+Return exec rofi -show run
 bindsym $mod+w exec rofi -show window
 
 # maim
-bindsym $mod+Print exec "maim -s | xclip -selection clipboard -t image/png"
+bindsym $mod+shift+p exec "maim -s | xclip -selection clipboard -t image/png"
 
-bindsym $mod+Shift+v mode "vol"
-mode "vol" {
-    bindsym k exec "volume up"
-    bindsym j exec "volume down"
-    bindsym m exec "volume mute"
-    bindsym space mode "default"
-}
+#bindsym $mod+Shift+v mode "vol"
+#mode "vol" {
+#    bindsym k exec "volume up"
+#    bindsym j exec "volume down"
+#    bindsym m exec "volume mute"
+#    bindsym space mode "default"
+#}
 
-bindsym $mod+Shift+m mode "mpd"
-mode "mpd" {
-  bindsym h exec mpc prev
-  bindsym '[' exec mpc seek +00:00:05
-  bindsym ']' exec mpc seek -00:00:05
-  bindsym l exec mpc next
-  bindsym m exec mpc toggle
-  bindsym j exec mpc volume -2
-  bindsym k exec mpc volume +2
+bindsym $mod+Shift+m mode "rhythmbox"
+mode "rhythmbox" {
+  bindsym h exec rhythmbox-client --previous
+  bindsym l exec rhythmbox-client --next
+  bindsym m exec rhythmbox-client --play-pause
+  bindsym j exec rhyctl -v -0.02
+  bindsym k exec rhyctl -v 0.02
+  bindsym p exec rhyctl -p
+  bindsym q exec rhyctl -q
   bindsym space mode "default"
 }
 
@@ -179,7 +183,7 @@ bindsym $mod+Shift+period move container to workspace next_on_output; workspace 
 
 
 # switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
+#for_window [urgent=latest] focus
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -260,7 +264,7 @@ client.unfocused        $darkgray $darkgray $blue $darkgray $darkgray
 client.urgent           $red $red $fg $red $red
 
 bar {
-    status_command i3status
+    status_command i3blocks
     mode hide
     colors {
         background $bg
